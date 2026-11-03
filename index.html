@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b11">
+  <meta name="description" content="Watch Mohammad Alwahsh's creative portfolio build itself live, element by element, with a team of digital agents.">
+  <title>Mohammad Alwahsh | A Portfolio Built Live</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem('alwahsh-builder-theme')==='light'?'light':'dark'}catch(e){}</script>
+  <script src="script.js" defer></script>
+</head>
+<body class="is-constructing">
+  <div id="experience" aria-live="off"></div>
+
+  <!-- The independent build animation UI never becomes part of the finished portfolio. -->
+  <div id="buildUi" class="build-ui" aria-label="Website construction in progress">
+    <div class="build-ui__top"><span class="live-pulse"></span><span id="buildHeadline">INITIALIZING THE CANVAS</span><span class="build-ui__number" id="buildPercent">00%</span></div>
+    <div class="build-ui__track"><span id="buildBar"></span></div>
+    <div class="build-ui__bottom"><span id="buildStage">00 / INITIALIZE</span><span id="buildSteps">00 ELEMENTS PLACED</span></div>
+  </div>
+  <div class="builder-actions" id="builderActions">
+    <button class="builder-button" id="pauseBuild" type="button" aria-label="Pause construction">Ⅱ &nbsp; PAUSE</button>
+    <button class="builder-button builder-button--strong" id="skipBuild" type="button">SKIP INTRO ↗</button>
+  </div>
+  <button class="replay-fab" id="replayBuild" type="button" hidden aria-label="Replay automatic website construction"><span>↻</span> REPLAY THE BUILD</button>
+  <div class="agents-layer" id="agentsLayer" aria-hidden="true"></div>
+  <div class="selection-layer" id="selectionLayer" aria-hidden="true">
+    <div class="selection-frame" id="selectionFrame"><i class="handle tl"></i><i class="handle tr"></i><i class="handle bl"></i><i class="handle br"></i><span id="selectionLabel">EDITING COMPONENT</span></div>
+  </div>
+  <div class="toast-finish" id="finishToast" aria-live="polite">✦ &nbsp; BUILD COMPLETE <small>YOUR PORTFOLIO IS READY</small></div>
+
+  <!-- Each template is inserted into the REAL document only when the agents build it. -->
+  <template id="tpl-header">
+    <header class="site-header stage-shell" id="siteHeader">
+      <a href="#home" class="brand build-part" data-build data-motion="type" aria-label="Alwahsh home">ALWAHSH<span class="accent">.</span></a>
+      <nav class="main-nav build-part" data-build aria-label="Main navigation">
+        <a href="#home">HOME</a><a href="#work">PROJECTS</a><a href="#skills">SKILLS</a><a href="#about">ABOUT</a><a href="#contact">CONTACT</a>
+      </nav>
+      <div class="header-actions build-part" data-build>
+        <button type="button" id="themeToggle" class="theme-toggle" aria-label="Switch color theme" title="Dark / Light mode"><span class="theme-icon" aria-hidden="true">◐</span><span>MODE</span></button>
+        <a class="header-contact" href="#contact">LET'S TALK <span>↗</span></a>
+        <button id="menuToggle" class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span></button>
+      </div>
+      <div id="mobileNav" class="mobile-nav" hidden><a href="#home">HOME</a><a href="#work">PROJECTS</a><a href="#skills">SKILLS</a><a href="#about">ABOUT</a><a href="#contact">CONTACT</a></div>
+    </header>
+  </template>
+
+  <template id="tpl-hero">
+    <main id="main">
+      <section id="home" class="hero stage-section">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-topline build-part" data-build><span><i class="red-dot"></i> PORTFOLIO // 2026</span><span>SOFTWARE ENGINEER · BETHLEHEM UNIVERSITY</span></div>
+        <div class="hero-backword build-part" data-build data-motion="type" aria-hidden="true">ALWAHSH</div>
+        <div class="hero-intro build-part" data-build data-motion="type">HELLO, I'M <span>MOHAMMAD</span></div>
+        <h1 class="hero-title build-part" data-build data-motion="type">I TURN<br>IDEAS INTO<br><span>REALITY.</span></h1>
+        <p class="hero-role build-part" data-build>SOFTWARE ENGINEERING STUDENT<br><strong>CREATIVE DEVELOPER & PROBLEM SOLVER</strong></p>
+        <p class="hero-summary build-part" data-build>Building thoughtful websites, applications, and digital experiences — one detail at a time.</p>
+        <div class="hero-buttons build-part" data-build><a class="button-primary" href="#work">EXPLORE MY WORK <span>↗</span></a><a class="button-minimal" href="#about">MORE ABOUT ME ↗</a></div>
+        <div class="hero-art build-part" data-build data-motion="image">
+          <span class="hero-art__halo"></span><span class="hero-art__rim"></span><span class="hero-art__edition">DESIGN / DEVELOPMENT / CREATION</span>
+          <img class="hero-art__figure" src="assets/hero-figure.svg" alt="Stylized silhouette standing for the developer">
+          <img class="hero-art__photo" src="assets/me.jpg" alt="Mohammad Alwahsh" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'">
+        </div>
+        <div class="hero-stamp build-part" data-build><span>01 / 07</span><span>DESIGNED<br>TO BE DIFFERENT</span><b>✳</b></div>
+        <div class="hero-footer build-part" data-build><span>↘ &nbsp; SCROLL TO DISCOVER</span><span>PALESTINE — AVAILABLE FOR COLLABORATION</span><span>01 — INTRO</span></div>
+      </section>
+    </main>
+  </template>
+
+  <template id="tpl-work">
+    <section id="work" class="work stage-section">
+      <div class="section-kicker build-part" data-build><span>01 / SELECTED WORK</span><span>PROJECTS AND SOFTWARE CONCEPTS</span></div>
+      <div class="work-heading build-part" data-build data-motion="type"><h2>THE WORK.<br><span>THE IDEAS.</span></h2><p>Design thinking meets software engineering. Below are visual concepts and experiments, not claims of completed client commissions.</p></div>
+      <div class="work-gallery">
+        <article class="work-card work-card--first">
+          <div class="work-card__image build-part" data-build data-motion="image"><img src="assets/project-website.png" alt="Visual concept for a responsive website"><span class="work-card__number">01</span><span class="card-view">VIEW CONCEPT ↗</span></div>
+          <div class="work-card__info build-part" data-build><div><small>WEB DESIGN / HTML + CSS</small><h3>WEBSITE<br>PROJECT</h3></div><button class="project-view" data-project="web" type="button" aria-label="Website Project details">↗</button></div>
+        </article>
+        <article class="work-card">
+          <div class="work-card__image build-part" data-build data-motion="image"><img src="assets/project-sales.png" alt="Concept image for a sales management interface"><span class="work-card__number">02</span><span class="card-view">VIEW CONCEPT ↗</span></div>
+          <div class="work-card__info build-part" data-build><div><small>DESKTOP APPLICATION / JAVAFX</small><h3>SALES<br>MANAGEMENT</h3></div><button class="project-view" data-project="sales" type="button" aria-label="Sales Management concept details">↗</button></div>
+        </article>
+        <article class="work-card">
+          <div class="work-card__image build-part" data-build data-motion="image"><img src="assets/project-database.png" alt="Database relationship diagram concept"><span class="work-card__number">03</span><span class="card-view">VIEW CONCEPT ↗</span></div>
+          <div class="work-card__info build-part" data-build><div><small>DATABASE / MYSQL</small><h3>DATABASE<br>DESIGN</h3></div><button class="project-view" data-project="database" type="button" aria-label="Database concept details">↗</button></div>
+        </article>
+      </div>
+      <div class="section-outro build-part" data-build><span>THREE VISIONS. ENDLESS POSSIBILITIES.</span><span>SCROLL FOR MORE ↓</span></div>
+    </section>
+  </template>
+
+  <template id="tpl-skills">
+    <section id="skills" class="skills stage-section">
+      <div class="section-kicker build-part" data-build><span>02 / THE TOOLKIT</span><span>THINGS I WORK WITH</span></div>
+      <div class="skills-intro build-part" data-build data-motion="type"><h2>CODE IS MY<br><span>CRAFT.</span></h2><p>From front-end experiences to databases and desktop applications — a growing toolkit with a problem-solving mindset.</p></div>
+      <div class="skill-grid" aria-label="Technical skills">
+        <div class="skill-item build-part" data-build><b>01</b><strong>HTML</strong><span>STRUCTURE</span><i>↗</i></div>
+        <div class="skill-item build-part" data-build><b>02</b><strong>CSS</strong><span>VISUAL SYSTEMS</span><i>↗</i></div>
+        <div class="skill-item build-part" data-build><b>03</b><strong>JAVASCRIPT</strong><span>INTERACTIVITY</span><i>↗</i></div>
+        <div class="skill-item build-part" data-build><b>04</b><strong>JAVA</strong><span>SOFTWARE LOGIC</span><i>↗</i></div>
+        <div class="skill-item build-part" data-build><b>05</b><strong>C++</strong><span>PROBLEM SOLVING</span><i>↗</i></div>
+        <div class="skill-item build-part" data-build><b>06</b><strong>MYSQL</strong><span>DATA MANAGEMENT</span><i>↗</i></div>
+        <div class="skill-item build-part" data-build><b>07</b><strong>JAVAFX</strong><span>DESKTOP APPS</span><i>↗</i></div>
+        <div class="skill-item build-part" data-build><b>08</b><strong>CISCO</strong><span>NETWORK SIMULATION</span><i>↗</i></div>
+      </div>
+    </section>
+  </template>
+
+  <template id="tpl-values">
+    <section id="values" class="values stage-section">
+      <div class="section-kicker build-part" data-build><span>03 / HOW I THINK</span><span>DESIGN + ENGINEERING</span></div>
+      <div class="values-lead build-part" data-build data-motion="type"><h2>FROM RAW.<br><span>TO REAL.</span></h2><p>Every great experience begins as an unfinished idea. I like turning that first sketch into something people can actually use.</p></div>
+      <div class="values-layout">
+        <div class="values-image build-part" data-build data-motion="image"><img src="assets/project-website.png" alt="Portfolio website visual concept"><span class="image-bracket">&lt; BUILD / 001 &gt;</span></div>
+        <div class="values-steps">
+          <div class="value-line build-part" data-build><span>01 / DISCOVER</span><strong>Understand the problem first.</strong></div>
+          <div class="value-line build-part" data-build><span>02 / DESIGN</span><strong>Make every detail intentional.</strong></div>
+          <div class="value-line build-part" data-build><span>03 / DEVELOP</span><strong>Turn a concept into working code.</strong></div>
+          <div class="value-line build-part" data-build><span>04 / IMPROVE</span><strong>Test, learn, and build better.</strong></div>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <template id="tpl-about">
+    <section id="about" class="about stage-section">
+      <div class="section-kicker build-part" data-build><span>04 / BEHIND THE SCREEN</span><span>GET TO KNOW ME</span></div>
+      <div class="about-grid">
+        <div class="about-left">
+          <h2 class="build-part" data-build data-motion="type">NOT JUST<br>VISUAL.<br><span>THOUGHTFUL.</span></h2>
+          <div class="about-mini build-part" data-build>KEEP LEARNING. KEEP BUILDING. <b>↗</b></div>
+        </div>
+        <div class="about-right">
+          <p class="about-quote build-part" data-build>“A good design looks great. A great solution actually works.”</p>
+          <p class="about-paragraph build-part" data-build>I'm <strong>Mohammad Alwahsh</strong>, a Software Engineering student at <strong>Bethlehem University</strong>. I love writing code, solving difficult problems, thinking deeply, and learning new technologies.</p>
+          <p class="about-paragraph build-part" data-build>And yes, I genuinely love sleeping — a lot. Even a beast needs time to recharge before the next big idea.</p>
+          <div class="about-tags build-part" data-build><span>CREATIVE THINKING</span><span>DETAIL ORIENTED</span><span>ALWAYS CURIOUS</span></div>
+        </div>
+      </div>
+      <div class="about-banner build-part" data-build><span>THE GOAL</span><strong>BUILD THINGS THAT MATTER.</strong><span>2026 ↗</span></div>
+    </section>
+  </template>
+
+  <template id="tpl-process">
+    <section id="process" class="process stage-section">
+      <div class="section-kicker build-part" data-build><span>05 / MY PROCESS</span><span>THINK — BUILD — TEST</span></div>
+      <h2 class="process-title build-part" data-build data-motion="type">SMALL STEPS.<br><span>BIG IMPACT.</span></h2>
+      <div class="process-timeline">
+        <div class="process-row build-part" data-build><span class="process-index">01</span><strong>IDEATE</strong><p>Understand the goal, find the core idea, and sketch out the right direction.</p><span class="process-arrow">↗</span></div>
+        <div class="process-row build-part" data-build><span class="process-index">02</span><strong>DESIGN</strong><p>Build a clear structure and a visual language that makes sense.</p><span class="process-arrow">↗</span></div>
+        <div class="process-row build-part" data-build><span class="process-index">03</span><strong>DEVELOP</strong><p>Translate the design into clean HTML, CSS, JavaScript, or Java.</p><span class="process-arrow">↗</span></div>
+        <div class="process-row build-part" data-build><span class="process-index">04</span><strong>REFINE</strong><p>Test the result, improve the details, and prepare the final experience.</p><span class="process-arrow">↗</span></div>
+      </div>
+    </section>
+  </template>
+
+  <template id="tpl-contact">
+    <section id="contact" class="contact stage-section">
+      <div class="section-kicker build-part" data-build><span>06 / GET IN TOUCH</span><span>THE NEXT CHAPTER STARTS HERE</span></div>
+      <div class="contact-layout">
+        <div class="contact-heading build-part" data-build data-motion="type"><h2>LET'S WORK<br>TOGETHER<span>.</span></h2><p>Have a question, an opportunity, or an interesting idea? I'd love to hear about it.</p><a href="mailto:202405125@bethlehem.edu" class="button-primary">START A CONVERSATION ↗</a></div>
+        <div class="contact-links">
+          <a class="contact-link build-part" data-build href="mailto:202405125@bethlehem.edu"><span>01 / EMAIL</span><strong>202405125@bethlehem.edu</strong><b>↗</b></a>
+          <a class="contact-link build-part" data-build href="https://github.com/Mohammad-Alwahish" target="_blank" rel="noopener noreferrer"><span>02 / GITHUB</span><strong>@Mohammad-Alwahish</strong><b>↗</b></a>
+          <div class="contact-link build-part" data-build><span>03 / LOCATION</span><strong>PALESTINE</strong><b>✳</b></div>
+          <div class="contact-note build-part" data-build>HAVE A GOOD IDEA? <span>LET'S MAKE IT REAL.</span></div>
+        </div>
+      </div>
+      <footer class="site-footer build-part" data-build><span>© 2026 MOHAMMAD ALWAHSH</span><span>DESIGNED & DEVELOPED WITH CARE.</span><a href="#home">BACK TO TOP ↑</a></footer>
+    </section>
+  </template>
+
+  <dialog class="project-dialog" id="projectDialog" aria-labelledby="dialogTitle"><button type="button" class="dialog-close" id="dialogClose" aria-label="Close details">✕</button><div id="dialogContent"></div></dialog>
+</body>
+</html>
